@@ -29,7 +29,7 @@ $people = $statement->fetchAll(PDO::FETCH_OBJ);
                         <td><?= $person->email; ?></td>
                         <td>
                             <a href="edit.php?id=<?=$person->id?>" class="btn btn-info">Edit</a>
-                            <a href="delete.php?id=<?=$person->id?>" class="btn btn-danger">Delete</a>
+                            <a onclick="return confirm('Are you sure you want to delete this person?')" href="delete.php?id=<?=$person->id?>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>    

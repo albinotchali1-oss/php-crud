@@ -10,11 +10,11 @@ $person = $statement->fetch(PDO::FETCH_OBJ);
 if (isset ($_POST['name']) && isset ($_POST['email'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $sql = 'INSERT INTO people(name, email) VALUES(:name, :email)';
+    $sql = 'UPDATE people SET name=:name, email=:email WHERE id=:id';
     $statement = $connection->prepare($sql);
 
-    if ($statement->execute([':name' => $name, ':email' => $email])) {
-       $message = 'data inserted succefully';
+    if ($statement->execute([':name' => $name, ':email' => $email, ':id' => $id])) {
+       header("Location: index.php");
     }
     
 }
@@ -44,7 +44,7 @@ if (isset ($_POST['name']) && isset ($_POST['email'])) {
                     <input value="<?= $person->email; ?>"  type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info">Create a person</button>
+                    <button type="submit" class="btn btn-info">Update person</button>
                 </div>
             </form>
         </div>
