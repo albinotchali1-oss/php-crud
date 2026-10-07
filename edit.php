@@ -2,7 +2,7 @@
 require 'db.php';
 
 $id = $_GET['id'];
-$sql = 'SELECT * FROM people WHERE id=id';
+$sql = 'SELECT * FROM people WHERE id=:id';
 $statement = $connection->prepare($sql);
 $statement->execute([':id' => $id]);
 $person = $statement->fetch(PDO::FETCH_OBJ);

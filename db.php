@@ -7,7 +7,7 @@ $options = [];
 
 try {
     $connection = new PDO($dsn, $username, $password, $options);
-    echo 'connection succeful'; 
+    # echo 'connection succeful'; 
 
 } catch (PDOException $e) {
     echo 'error' . $e->getMessage();
