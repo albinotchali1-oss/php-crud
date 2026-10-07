@@ -1,9 +1,12 @@
 <?php 
 
+require 'db.php';
+$message = '';
+
 if (isset ($_POST['name']) && isset ($_POST['email'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $sql = 'INSERT INTO people (name, email) VALUES (:name, :email)';
+    $sql = 'INSERT INTO people(name, email) VALUES(:name, :email)';
     $statement = $connection->prepare($sql);
 
     if ($statement->execute([':name' => $name, ':email' => $email])) {
@@ -26,6 +29,7 @@ if (isset ($_POST['name']) && isset ($_POST['email'])) {
                 <div class="alert alert-success">
                     <?= $message; ?>
                 </div>
+            <?php endif; ?>
             <form method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -42,4 +46,5 @@ if (isset ($_POST['name']) && isset ($_POST['email'])) {
         </div>
     </div>
 </div>
+
 <?php require 'footer.php'; ?>
